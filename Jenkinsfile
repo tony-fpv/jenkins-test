@@ -5,12 +5,12 @@ pipeline {
 // 2.variables for the parametrized execution of the test: Text and options
         choice(choices: 'yes\nno', description: 'Are you sure you want to execute this test?', name: 'run_test_only')
         choice(choices: 'yes\nno', description: 'Archived war?', name: 'archive_war')
-        string(defaultValue: "your.email@gmail.com", description: 'email for notifications', name: 'notification_email')
+        string(defaultValue: "fbanespo@gmail.com", description: 'email for notifications', name: 'notification_email')
     }
 //3. Environment variables
 environment {
 firstEnvVar= 'FIRST_VAR'
-secondEnvVar= 'SECOND_VAR'
+secondEnvVar='SECOND_VAR'
 thirdEnvVar= 'THIRD_VAR'
 }
 //4. Stages
@@ -63,7 +63,7 @@ echo "Test succeeded"
                 mail(bcc: '',
                      body: "Run ${JOB_NAME}-#${BUILD_NUMBER} succeeded. To get more details, visit the build results page: ${BUILD_URL}.",
                      cc: '',
-                     from: 'jenkins-admin@gmail.com',
+                     from: 'fbanespo@gmail.com',
                      replyTo: '',
                      subject: "${JOB_NAME} ${BUILD_NUMBER} succeeded",
                      to: env.notification_email)
